@@ -25,6 +25,8 @@ public class App
     }
 	
 	public static void parseParameters(String[] parameter) {
+		fileNames = new LinkedList<String>();
+		
 		for(String s : parameter) {
 			if(s.startsWith("-f:")) {
         		fileNames.add(s.substring(3));
