@@ -1,0 +1,30 @@
+2017-01-29 23:34:18.393 - TEST : CalendartestinSearchform 
+2017-01-29 23:34:18.435 - DEBUG : C:\Temp\logs/CalendartestinSearchform20170129_233418_392.txt 
+2017-01-29 23:34:18.454 - STEP : SunHotels.BrowserTests.PageInteraction`1[Web.BrowserTests.PageObjects.Validations.ValidateAgent] 
+2017-01-29 23:34:33.243 - ERROR : Error arise during validateTestOptionsSystem.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): The network path was not found
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Web.BrowserTests.DAO.BaseDao.connect() in C:\Users\jvich\development\repo\tests.ui\Web.BrowserTests\DAO\BaseDao.cs:line 25
+   at Web.BrowserTests.Manager.AgentManager.validateTestOptions(BasicSearchConfig basic) in C:\Users\jvich\development\repo\tests.ui\Web.BrowserTests\Manager\AgentManager.cs:line 93
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:53,State:0,Class:20 
+2017-01-29 23:34:33.277 - ERROR : Critical error arise!System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): The network path was not found
+   at Web.BrowserTests.Manager.AgentManager.validateTestOptions(BasicSearchConfig basic) in C:\Users\jvich\development\repo\tests.ui\Web.BrowserTests\Manager\AgentManager.cs:line 121
+   at Web.BrowserTests.PageObjects.Validations.ValidateAgent.validateTestOptions(BasicSearchConfig basic) in C:\Users\jvich\development\repo\tests.ui\Web.BrowserTests\PageObjects\Validations\ValidateAgent.cs:line 24
+   at Web.BrowserTests.Tests.Calendar.CalendarPickerTest.<calendarCheck>b__2_0(ValidateAgent p) in C:\Users\jvich\development\repo\tests.ui\Web.BrowserTests\Tests\Calendar\CalendarPickerTest.cs:line 37
+   at SunHotels.BrowserTests.PageInteraction`1.Execute() in C:\Users\jvich\development\repo\tests.ui\SunHotels.BrowserTests\PageSequenceTest.cs:line 77
+   at SunHotels.BrowserTests.PageSequenceTest.Execute() in C:\Users\jvich\development\repo\tests.ui\SunHotels.BrowserTests\PageSequenceTest.cs:line 37
+   at SunHotels.BrowserTests.WebTestBase.ExecuteTest(PageSequenceTest sequence) in C:\Users\jvich\development\repo\tests.ui\SunHotels.BrowserTests\WebTestBase.cs:line 103
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:53,State:0,Class:20 

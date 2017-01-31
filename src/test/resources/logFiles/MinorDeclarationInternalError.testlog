@@ -1,0 +1,27 @@
+2017-01-28 23:47:40.084 - DEBUG : Start test 20170128_234740_082
+2017-01-28 23:47:40.085 - DEBUG : Test container ready
+2017-01-28 23:47:42.605 - DEBUG : Firefox web driver ready
+2017-01-28 23:47:42.605 - TEST : Minor declaration internal error
+2017-01-28 23:47:42.606 - INFO : Environment : LIVE
+2017-01-28 23:47:42.607 - STEP : Search in Google
+2017-01-28 23:47:42.608 - INFO : Navigate to https://www.google.com
+2017-01-28 23:47:45.326 - TRIVIAL : Wait until clickable : //*[@id='lst-ib']
+2017-01-28 23:47:45.427 - DEBUG : Landing page validation done
+2017-01-28 23:47:45.429 - TIME : 143 #@# LOAD_TIME #@# Landing page
+2017-01-28 23:47:45.429 - INFO : send keys (Mallorca) to element : //*[@id='lst-ib']
+2017-01-28 23:47:45.529 - INFO : send keys () to element : //*[@id='lst-ib']
+2017-01-28 23:47:45.585 - TIME : 5000 #@# WAIT #@# Just wait
+2017-01-28 23:47:50.585 - DEBUG : Search done
+2017-01-28 23:47:45.595 - INTERNAL_ERROR : This is a test internal error message for test declaration purpouses
+2017-01-28 23:47:50.789 - STEP : Search in Google
+2017-01-28 23:47:50.789 - INFO : Navigate to https://www.google.com
+2017-01-28 23:47:51.743 - TRIVIAL : Wait until clickable : //*[@id='lst-ib']
+2017-01-28 23:47:51.830 - DEBUG : Landing page validation done
+2017-01-28 23:47:51.830 - TIME : 87 #@# LOAD_TIME #@# Landing page
+2017-01-28 23:47:51.830 - INFO : send keys (Menorca) to element : //*[@id='lst-ib']
+2017-01-28 23:47:51.947 - INFO : send keys () to element : //*[@id='lst-ib']
+2017-01-28 23:47:52.022 - TIME : 5000 #@# WAIT #@# Just wait
+2017-01-28 23:47:57.023 - DEBUG : Search done
+2017-01-28 23:47:57.146 - DEBUG : Success test rule
+2017-01-28 23:47:57.272 - TIME : 17183 #@# TEST_TIME #@# TEST
+2017-01-28 23:47:57.273 - DEBUG : End selenium test

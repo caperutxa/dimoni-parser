@@ -1,0 +1,31 @@
+Parameters
+----------
+-f:[filePathAndName]
+	Files to be parsed, more than one could be passed with several -f parameters
+-d:[destinationPathAndFile]
+	File destination for html report. If more than one file is passed the last
+	name will be used and ignored the previous ones
+-db:boolean
+	Use db
+
+
+
+Reporting
+---------
+HTML reports will be created after parse the log file
+If more than one file is passed, the report name will be the first file name passed
+
+Times
+-----
+To evaluate the total time (from the beginning to end) the first and the last
+row should start with the configured date time format
+  --> By default "yyyy-MM-dd HH:mm:ss.SSS"
+
+To extract the times correctly the log should follow this format:
+  [DateTime format] - TIME : [long] #@# [ETimeS] #@# [string description]
+Note that the string separators (#@#) are too much important
+ 
+Versions
+--------
+0.1 split parser from dimoni.spider.
+0.2 Alpha testing with external files
