@@ -44,10 +44,16 @@ public class Parser {
 	 * @param args
 	 */
 	public static void startProcess(List<String> args) {
+		if(args.isEmpty()) {
+			System.out.println("No file passed to be parsed!");
+			return;
+		}
+		
 		int i = 0;
 		html = new StringBuilder();
 		
 		for(String s : args) {
+			System.out.println("Parse file : " + s);
 			i++;
 			logModel = new LogModel();
 			logModel.setLogFileAbsolutePath(s);

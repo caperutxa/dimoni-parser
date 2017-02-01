@@ -1,3 +1,10 @@
+Log files
+---------
+The expected format is
+	[DateTime format] - [Log level] : description
+Special case is used to parse times
+	[DateTime format] - TIME : [long] #@# [ETimeS] #@# [string description]
+
 Parameters
 ----------
 -f:[filePathAndName]
@@ -7,6 +14,8 @@ Parameters
 	name will be used and ignored the previous ones
 -db:boolean
 	Use db
+-tp:[timeParserString]
+	String about how date times are logged in the beginnig of the line
 
 
 

@@ -55,12 +55,14 @@ public class AppTest {
 				"-db:false"
 				, "-d:logs/testParameters.html"
 				, "-f:SuccessDeclaration.testlog"
+				, "-tp:\"HH:mm:ss.SSS yyyy-MM-dd\""
 		};
 		
 		App.parseParameters(args);
 		
 		Assert.assertEquals(false, Constants.USE_DB);
 		Assert.assertEquals("logs/testParameters.html", Constants.DESTINATION_FILE);
+		Assert.assertEquals("HH:mm:ss.SSS yyyy-MM-dd", Constants.LOG_DATETIME_FORMAT);
 		
 		for(String s : App.fileNames) {
 			Assert.assertEquals("SuccessDeclaration.testlog", s);
@@ -75,12 +77,14 @@ public class AppTest {
 				, "-f:file.testlog"
 				, "-f:file.testlog"
 				, "-f:file.testlog"
+				, "-tp:'HH:mm:ss.SSS yyyy-MM-dd'"
 		};
 		
 		App.parseParameters(args);
 		
 		Assert.assertEquals(true, Constants.USE_DB);
 		Assert.assertEquals("destination.html", Constants.DESTINATION_FILE);
+		Assert.assertEquals("HH:mm:ss.SSS yyyy-MM-dd", Constants.LOG_DATETIME_FORMAT);
 		
 		for(String s : App.fileNames) {
 			Assert.assertEquals("file.testlog", s);

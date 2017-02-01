@@ -14,7 +14,7 @@ import caperutxa.dimoni.parser.constants.Constants;
  */
 public class App 
 {
-    public static List<String> fileNames = new LinkedList<String>();
+    public static List<String> fileNames;
 	
 	public static void main( String[] args )
     {
@@ -30,15 +30,22 @@ public class App
 		for(String s : parameter) {
 			if(s.startsWith("-f:")) {
         		fileNames.add(s.substring(3));
+        		System.out.println("File to parse " + s.substring(3));
         	} else if(s.startsWith("-db:")) {
         		Constants.USE_DB = Boolean.valueOf(s.substring(4));
+        		System.out.println("Use DB modified to " + Constants.USE_DB);
         	} else if(s.startsWith("-d:")) {
         		Constants.DESTINATION_FILE = s.substring(3);
+        		System.out.println("New destination file " + Constants.DESTINATION_FILE);
         		try {
 					Files.deleteIfExists(new File(Constants.DESTINATION_FILE).toPath());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+        	} else if(s.startsWith("-tp:")) {
+        		Constants.LOG_DATETIME_FORMAT = s.substring(4);
+        		Constants.LOG_DATETIME_FORMAT = Constants.LOG_DATETIME_FORMAT.replaceAll("\"", "").replaceAll("'","");
+        		System.out.println("New date time format " + Constants.LOG_DATETIME_FORMAT);
         	} else {
         		System.out.println("Unknown parameter " + s);
         	}
