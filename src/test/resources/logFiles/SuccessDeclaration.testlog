@@ -1,4 +1,5 @@
 2017-01-28 23:47:40.084 - DEBUG : Start test 20170128_234740_082
+2017-01-28 23:47:42.605 - TEST : 20170128_234740_082
 2017-01-28 23:47:40.085 - DEBUG : Test container ready
 2017-01-28 23:47:42.605 - DEBUG : Firefox web driver ready
 2017-01-28 23:47:42.605 - TEST : Success declaration
@@ -21,6 +22,7 @@
 2017-01-28 23:47:51.947 - INFO : send keys () to element : //*[@id='lst-ib']
 2017-01-28 23:47:52.022 - TIME : 5000 #@# WAIT #@# Just wait
 2017-01-28 23:47:57.023 - DEBUG : Search done
+2017-01-28 23:47:42.605 - TEST : Success declaration
 2017-01-28 23:47:57.146 - DEBUG : Success test rule
 2017-01-28 23:47:57.272 - TIME : 17183 #@# TEST_TIME #@# TEST
 2017-01-28 23:47:57.273 - DEBUG : End selenium test2017-01-29 12:37:46.555 - INFO : New iteration inserted with id : 13

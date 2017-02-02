@@ -57,7 +57,7 @@ public class LogModel {
 		
 		StringBuilder name = new StringBuilder();
 		for(String s : testName) {
-			name.append(s);
+			name.append(s).append("<br />");
 		}
 		
 		return name.toString();

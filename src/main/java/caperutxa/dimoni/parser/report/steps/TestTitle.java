@@ -42,6 +42,8 @@ public class TestTitle extends ReportStep {
 				alertClass = "alert alert-info";
 				resultMessage = "<strong>" + declare + "</strong>. The test pass but some internal errors arise. Please, fix your test to remove the errors";
 			} else {
+				iconClass = "glyphicon glyphicon-thumbs-up";
+				alertClass = "alert alert-success";
 				resultMessage = "<strong>" + declare + "</strong>. Well done! ";
 			}
 		}
@@ -55,16 +57,16 @@ public class TestTitle extends ReportStep {
 	
 	@Override
 	public String toHTML() {
-		StringBuilder html = new StringBuilder("<p class='h3'> ")
+		StringBuilder html = new StringBuilder("<p class='h2'> ")
 				.append(testName)
-				.append(" <small class='text-muted'> ")
+				.append(" <span class='text-muted small'> ")
 				.append(startDate)
-				.append(" </small></p>");
+				.append(" </span></p>");
 		
 		html.append("<div class='")
 				.append(alertClass)
 				.append("' role='alert'>")
-					.append("<p><span class='")
+					.append("<p class='lead'><span class='")
 					.append(iconClass)
 					.append("' aria-hidden='true'></span> ")
 					.append(resultMessage)

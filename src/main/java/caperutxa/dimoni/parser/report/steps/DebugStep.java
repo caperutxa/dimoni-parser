@@ -7,7 +7,7 @@ public class DebugStep extends ReportStep {
 	public DebugStep(String content) {
 		super(content);
 		iconClass = "glyphicon glyphicon-pencil";
-		cssClass = "col-xs-11 col-xs-offset-1 text-muted small";
+		cssClass = "col-xs-11 col-xs-offset-1 text-muted";
 	}
 
 	@Override

@@ -6,9 +6,11 @@ import java.nio.file.Files;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import caperutxa.dimoni.parser.constants.Constants;
+import caperutxa.dimoni.parser.constants.ETestDeclaration;
 
 public class ParserTest {
 
@@ -51,4 +53,38 @@ public class ParserTest {
 		
 		Parser.startProcess(args);
 	}
+	
+	@Test
+	public void successLogFile() throws IOException {
+		args.add("src/test/resources/logFiles/SuccessDeclaration.testlog");
+		Constants.DESTINATION_FILE = "logs/SuccessDeclaration.testlog.html";
+		Files.deleteIfExists(new File(Constants.DESTINATION_FILE).toPath());
+		
+		Parser.startProcess(args);
+		Assert.assertEquals(true, Parser.logModel.isTestSuccess());
+		Assert.assertEquals(ETestDeclaration.SUCCESS, Parser.logModel.getTestResultDeclaration());
+	}
+	
+	@Test
+	public void warningLogFile() throws IOException {
+		args.add("src/test/resources/logFiles/WarningDeclarationWarning.testlog");
+		Constants.DESTINATION_FILE = "logs/WarningDeclaration.testlog.html";
+		Files.deleteIfExists(new File(Constants.DESTINATION_FILE).toPath());
+		
+		Parser.startProcess(args);
+		Assert.assertEquals(true, Parser.logModel.isTestSuccess());
+		Assert.assertEquals(ETestDeclaration.WARNING, Parser.logModel.getTestResultDeclaration());
+	}
+	
+	@Test
+	public void MinorLogFile() throws IOException {
+		args.add("src/test/resources/logFiles/MinorDeclarationInternalError.testlog");
+		Constants.DESTINATION_FILE = "logs/MinorDeclaration.testlog.html";
+		Files.deleteIfExists(new File(Constants.DESTINATION_FILE).toPath());
+		
+		Parser.startProcess(args);
+		Assert.assertEquals(true, Parser.logModel.isTestSuccess());
+		Assert.assertEquals(ETestDeclaration.MINOR, Parser.logModel.getTestResultDeclaration());
+	}
+	
 }
