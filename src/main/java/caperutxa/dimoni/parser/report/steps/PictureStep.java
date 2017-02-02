@@ -15,8 +15,8 @@ public class PictureStep extends ReportStep {
 
 	@Override
 	public void parseContent() {
-		parseContent = content.substring(11);
-		imgPath = parseContent.split("- PICTURE : ")[1];
+		parseContent = content;
+		imgPath = content.split("- PICTURE : ")[1];
 	}
 	
 	@Override

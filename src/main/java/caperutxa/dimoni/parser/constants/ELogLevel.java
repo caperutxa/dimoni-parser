@@ -16,6 +16,7 @@ public enum ELogLevel {
 	, INTERNAL_ERROR (3)
 	, PICTURE(3)
 	, STEP(3)
+	, SUCCESS(10)
 	, TEST(1)
 	, TIME(6)
 	, TRIVIAL (11)

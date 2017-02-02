@@ -15,6 +15,7 @@ import caperutxa.dimoni.parser.report.steps.StepBlocker;
 import caperutxa.dimoni.parser.report.steps.StepCritical;
 import caperutxa.dimoni.parser.report.steps.StepError;
 import caperutxa.dimoni.parser.report.steps.StepInternalError;
+import caperutxa.dimoni.parser.report.steps.StepSuccess;
 import caperutxa.dimoni.parser.report.steps.StepTest;
 import caperutxa.dimoni.parser.report.steps.StepWarning;
 import caperutxa.dimoni.parser.report.steps.TestTitle;
@@ -139,6 +140,8 @@ public class ReportsHTML {
 				last = new TrivialStep(s);
 			} else if(s.contains("- " + ELogLevel.STEP + " :")) {
 				last = new StepTest(s);
+			} else if(s.contains("- " + ELogLevel.SUCCESS + " :")) {
+				last = new StepSuccess(s);
 			} else if(s.contains("- " + ELogLevel.WARNING + " :")) {
 				last = new StepWarning(s);
 			} else {
@@ -155,10 +158,6 @@ public class ReportsHTML {
 				last.parseContent();
 				htmlSteps.add(last);
 			}
-		}
-		
-		if(!add) {
-			htmlSteps.add(last);
 		}
 	}
 	

@@ -12,7 +12,7 @@ public class StepError extends ReportStep {
 
 	@Override
 	public void parseContent() {
-		content = content.substring(11);
+		// Nothing to do
 	}
 
 }

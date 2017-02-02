@@ -15,7 +15,6 @@ public class StepTest extends ReportStep {
 
 	@Override
 	public void parseContent() {
-		content = content.substring(11);
 		stepName = content.split("- STEP :")[1];
 		stepTime = content.split("- STEP :")[0];
 	}

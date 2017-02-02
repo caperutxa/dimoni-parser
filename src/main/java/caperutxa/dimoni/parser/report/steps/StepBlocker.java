@@ -12,7 +12,6 @@ public class StepBlocker extends ReportStep {
 
 	@Override
 	public void parseContent() {
-		content = content.substring(11);
 		String[] partial = content.split("- BLOCKER :");
 		content = partial[0] + "<strong> BLOCKER ERROR </strong>" + partial[1];
 		

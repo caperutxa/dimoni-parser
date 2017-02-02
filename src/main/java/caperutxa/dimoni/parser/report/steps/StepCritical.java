@@ -12,7 +12,6 @@ public class StepCritical extends ReportStep {
 
 	@Override
 	public void parseContent() {
-		content = content.substring(11);
 		String[] partial = content.split("- CRITICAL :");
 		content = partial[0] + "<strong> CRITICAL ERROR </strong>" + partial[1];
 	}
