@@ -90,4 +90,32 @@ public class AppTest {
 			Assert.assertEquals("file.testlog", s);
 		}
 	}
+	
+	@Test
+	public void applyDefaultConfigTest() {
+		Constants.USE_DB = true;
+		Constants.CONNECTION_STRING = "1";
+		Constants.JDBC_DRIVER = "1";
+		Constants.JDBC_USER = "1";
+		Constants.JDBC_PASS = "1";
+		Constants.LOG_DATETIME_FORMAT = "1";
+		
+		App.applyDefaultConfig();
+		
+		Assert.assertEquals(false, Constants.USE_DB);
+		Assert.assertEquals("jdbc:mysql://localhost:3306/selenium", Constants.CONNECTION_STRING);
+		Assert.assertEquals("com.mysql.cj.jdbc.Driver", Constants.JDBC_DRIVER);
+		Assert.assertEquals("selenium", Constants.JDBC_USER);
+		Assert.assertEquals("sTcSmdFBb5SPpNMb", Constants.JDBC_PASS);
+		
+		Assert.assertEquals("yyyy-MM-dd HH:mm:ss.SSS", Constants.LOG_DATETIME_FORMAT);
+	}
+	
+	@Test
+	public void handleDateTimeWrongFormat() {
+		String format = "aloha";
+		String defaultFormat = Constants.LOG_DATETIME_FORMAT;
+		App.parseParameters(new String[]{ format });
+		Assert.assertEquals(defaultFormat, Constants.LOG_DATETIME_FORMAT);
+	}
 }

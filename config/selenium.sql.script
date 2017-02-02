@@ -1,0 +1,105 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.13.1deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Feb 02, 2017 at 07:17 AM
+-- Server version: 5.6.31-0ubuntu0.15.10.1
+-- PHP Version: 5.6.11-1ubuntu3.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `selenium`
+--
+CREATE DATABASE IF NOT EXISTS `selenium` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `selenium`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_iteration`
+--
+
+DROP TABLE IF EXISTS `test_iteration`;
+CREATE TABLE IF NOT EXISTS `test_iteration` (
+  `id` int(11) NOT NULL,
+  `test_name` varchar(250) NOT NULL,
+  `insert_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `environment` varchar(50) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  `result` varchar(50) NOT NULL,
+  `message` varchar(5000) DEFAULT NULL,
+  `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `log_file` varchar(1000) NOT NULL,
+  `report_file` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_time`
+--
+
+DROP TABLE IF EXISTS `test_time`;
+CREATE TABLE IF NOT EXISTS `test_time` (
+  `id` int(11) NOT NULL,
+  `test_iteration` int(11) NOT NULL,
+  `time_type_generic` varchar(50) NOT NULL,
+  `time_type_specific` varchar(1000) DEFAULT NULL,
+  `insert_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `duration` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `test_iteration`
+--
+ALTER TABLE `test_iteration`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `test_time`
+--
+ALTER TABLE `test_time`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `test_time_iteration_id` (`test_iteration`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `test_iteration`
+--
+ALTER TABLE `test_iteration`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `test_time`
+--
+ALTER TABLE `test_time`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `test_time`
+--
+ALTER TABLE `test_time`
+  ADD CONSTRAINT `test_time_iteration_id` FOREIGN KEY (`test_iteration`) REFERENCES `test_iteration` (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
