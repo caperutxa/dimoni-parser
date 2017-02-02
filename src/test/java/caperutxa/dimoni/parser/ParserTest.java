@@ -46,7 +46,7 @@ public class ParserTest {
 	@Test
 	public void externalLogFile() throws IOException {
 		args.add("src/test/resources/logFiles/CalendartestinSearchform.txt");
-		Constants.DESTINATION_FILE = "logs/CalendartestinSearchform.html";
+		Constants.DESTINATION_FILE = "logs/CalendartestingSearchform.html";
 		Files.deleteIfExists(new File(Constants.DESTINATION_FILE).toPath());
 		
 		Parser.startProcess(args);

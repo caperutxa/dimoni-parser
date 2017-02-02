@@ -111,56 +111,54 @@ public class ReportsHTML {
 	 * @param list
 	 */
 	void extractContent(List<String> list) {
+		ReportStep last = new DebugStep("");
+		boolean add = true;
+		
 		for(String s : list) {
+			add = true;
+			
 			if(s.contains("- " + ELogLevel.TEST + " :")
 					|| s.contains("- " + ELogLevel.DEBUG + " :")
 			) {
-				htmlSteps.add(new DebugStep(s));
+				last = new DebugStep(s);
 			} else if(s.contains("- " + ELogLevel.BLOCKER + " :")) {
-				StepBlocker sb = new StepBlocker(s);
-				sb.parseContent();
-				htmlSteps.add(sb);
+				last = new StepBlocker(s);
 			} else if(s.contains("- " + ELogLevel.CRITICAL + " :")) {
-				StepCritical sc = new StepCritical(s);
-				sc.parseContent();
-				htmlSteps.add(sc);
+				last = new StepCritical(s);
 			} else if(s.contains("- " + ELogLevel.ERROR + " :")) {
-				StepError se = new StepError(s);
-				se.parseContent();
-				htmlSteps.add(se);
+				last = new StepError(s);
 			} else if(s.contains("- " + ELogLevel.INFO + " :")) {
-				InfoStep i = new InfoStep(s);
-				i.parseContent();
-				htmlSteps.add(i);
+				last = new InfoStep(s);
 			} else if(s.contains("- " + ELogLevel.INTERNAL_ERROR + " :")) {
-				StepInternalError sie = new StepInternalError(s);
-				sie.parseContent();
-				htmlSteps.add(sie);
+				last = new StepInternalError(s);
 			} else if(s.contains("- " + ELogLevel.PICTURE + " :")) {
-				PictureStep p = new PictureStep(s);
-				p.parseContent();
-				htmlSteps.add(p);
+				last = new PictureStep(s);
 			} else if(s.contains("- " + ELogLevel.TIME + " :")) {
-				TimeStep t = new TimeStep(s);
-				t.parseContent();
-				htmlSteps.add(t);
+				last = new TimeStep(s);
 			} else if(s.contains("- " + ELogLevel.TRIVIAL + " :")) {
-				TrivialStep t = new TrivialStep(s);
-				t.parseContent();
-				htmlSteps.add(t);
+				last = new TrivialStep(s);
 			} else if(s.contains("- " + ELogLevel.STEP + " :")) {
-				StepTest t = new StepTest(s);
-				t.parseContent();
-				htmlSteps.add(t);
+				last = new StepTest(s);
 			} else if(s.contains("- " + ELogLevel.WARNING + " :")) {
-				StepWarning w = new StepWarning(s);
-				w.parseContent();
-				htmlSteps.add(w);
+				last = new StepWarning(s);
 			} else {
-				DebugStep d = new DebugStep(s);
-				d.setCssClass("col-xs-11 col-xs-offset-1");
-				htmlSteps.add(d);
+				add = false;
+				StringBuilder lastString = new StringBuilder(last.getContent())
+						.append("<br />")
+						.append("<span style='padding-left:3%;'>")
+						.append(s)
+						.append("</span>");
+				last.setContent(lastString.toString());
 			}
+			
+			if(add) {
+				last.parseContent();
+				htmlSteps.add(last);
+			}
+		}
+		
+		if(!add) {
+			htmlSteps.add(last);
 		}
 	}
 	
