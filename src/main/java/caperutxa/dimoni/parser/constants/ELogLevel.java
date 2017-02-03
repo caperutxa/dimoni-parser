@@ -9,6 +9,7 @@ package caperutxa.dimoni.parser.constants;
  */
 public enum ELogLevel {
 	BLOCKER(1)
+	, CONSOLE (11)
 	, CRITICAL(2)
 	, DEBUG (10)
 	, ERROR (3)

@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import caperutxa.dimoni.parser.constants.Constants;
+import caperutxa.dimoni.parser.constants.ELogLevel;
 import caperutxa.dimoni.parser.constants.ETestDeclaration;
 
 public class ParserTest {
@@ -85,6 +86,26 @@ public class ParserTest {
 		Parser.startProcess(args);
 		Assert.assertEquals(true, Parser.logModel.isTestSuccess());
 		Assert.assertEquals(ETestDeclaration.MINOR, Parser.logModel.getTestResultDeclaration());
+	}
+	
+	@Test
+	public void allTypesOfLogs() throws IOException {
+		args.add("src/test/resources/logFiles/allTypesOfLogs.testlog");
+		Constants.DESTINATION_FILE = "logs/allTypesOfLogs.testlog.html";
+		Files.deleteIfExists(new File(Constants.DESTINATION_FILE).toPath());
+		
+		Parser.startProcess(args);
+		Assert.assertEquals(false, Parser.logModel.isTestSuccess());
+		Assert.assertEquals(ETestDeclaration.ERROR, Parser.logModel.getTestResultDeclaration());
+		
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.BLOCKER));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.CRITICAL));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.ERROR));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.INTERNAL_ERROR));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.MAJOR));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.MINOR));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.WARNING));
+		Assert.assertEquals(Integer.valueOf(10), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.OTHERS));
 	}
 	
 }

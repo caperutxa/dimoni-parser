@@ -171,6 +171,10 @@ public class Parser {
 				addLogLevelDeclarationToTestModel(ELogLevel.ERROR);
 			} else if(s.contains("- " + ELogLevel.INTERNAL_ERROR + " :")) {
 				addLogLevelDeclarationToTestModel(ELogLevel.INTERNAL_ERROR);
+			} else if(s.contains("- " + ELogLevel.MAJOR + " :")) {
+				addLogLevelDeclarationToTestModel(ELogLevel.MAJOR);
+			} else if(s.contains("- " + ELogLevel.MINOR + " :")) {
+				addLogLevelDeclarationToTestModel(ELogLevel.MINOR);
 			} else if(s.contains("- " + ELogLevel.WARNING + " :")) {
 				addLogLevelDeclarationToTestModel(ELogLevel.WARNING);
 			} else if(s.contains("- " + ELogLevel.TEST + " :")) {
@@ -190,7 +194,9 @@ public class Parser {
 		} else if(logModel.getLogLevelDeclaration().containsKey(ELogLevel.WARNING)) {
 			logModel.setTestSuccess(true);
 			logModel.setTestResultDeclaration(ETestDeclaration.WARNING);
-		} else if(logModel.getLogLevelDeclaration().containsKey(ELogLevel.INTERNAL_ERROR)) {
+		} else if(logModel.getLogLevelDeclaration().containsKey(ELogLevel.INTERNAL_ERROR)
+				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.MAJOR)
+				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.MINOR)) {
 			logModel.setTestSuccess(true);
 			logModel.setTestResultDeclaration(ETestDeclaration.MINOR);
 		} else {

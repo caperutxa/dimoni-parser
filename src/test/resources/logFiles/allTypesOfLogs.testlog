@@ -1,0 +1,17 @@
+2017-01-28 23:47:40.084 - DEBUG : Start test 20170128_234740_082
+2017-01-28 23:47:42.605 - TEST : All types of logs
+2017-01-28 23:47:42.606 - INFO : Environment : LIVE
+2017-01-28 23:47:42.607 - STEP : Search in Google
+2017-01-28 23:47:42.608 - INTERNAL_ERROR : Navigate to https://www.google.com
+2017-01-28 23:47:57.146 - SUCCESS : Success test rule
+2017-01-28 23:47:45.427 - WARNING : Landing page validation done
+2017-01-28 23:47:42.605 - ERROR : Start test
+2017-01-28 23:47:50.585 - CRITICAL : Search done
+2017-01-28 23:47:45.326 - TRIVIAL : Wait until clickable : //*[@id='lst-ib']
+2017-01-28 23:47:45.427 - MINOR : Landing page validation done
+2017-01-28 23:47:45.595 - BLOCKER : This is a test message for test declaration purpouses
+2017-01-28 23:47:45.595 - CONSOLE : This is a test message for test declaration purpouses
+2017-01-28 23:47:50.585 - MAJOR : Major issues
+2017-01-28 23:47:57.272 - TIME : 17183 #@# TEST_TIME #@# TEST
+2017-01-28 23:47:42.607 - PICTURE : Non existing file
+2017-01-28 23:47:57.273 - DEBUG : End selenium test

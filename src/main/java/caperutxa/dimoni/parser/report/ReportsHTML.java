@@ -15,6 +15,8 @@ import caperutxa.dimoni.parser.report.steps.StepBlocker;
 import caperutxa.dimoni.parser.report.steps.StepCritical;
 import caperutxa.dimoni.parser.report.steps.StepError;
 import caperutxa.dimoni.parser.report.steps.StepInternalError;
+import caperutxa.dimoni.parser.report.steps.StepMajor;
+import caperutxa.dimoni.parser.report.steps.StepMinor;
 import caperutxa.dimoni.parser.report.steps.StepSuccess;
 import caperutxa.dimoni.parser.report.steps.StepTest;
 import caperutxa.dimoni.parser.report.steps.StepWarning;
@@ -124,6 +126,8 @@ public class ReportsHTML {
 				last = new StepDebug(s);
 			} else if(s.contains("- " + ELogLevel.BLOCKER + " :")) {
 				last = new StepBlocker(s);
+			} else if(s.contains("- " + ELogLevel.CONSOLE + " :")) {
+				last = new StepConsole(s);
 			} else if(s.contains("- " + ELogLevel.CRITICAL + " :")) {
 				last = new StepCritical(s);
 			} else if(s.contains("- " + ELogLevel.ERROR + " :")) {
@@ -132,6 +136,10 @@ public class ReportsHTML {
 				last = new StepInfo(s);
 			} else if(s.contains("- " + ELogLevel.INTERNAL_ERROR + " :")) {
 				last = new StepInternalError(s);
+			} else if(s.contains("- " + ELogLevel.MAJOR + " :")) {
+				last = new StepMajor(s);
+			} else if(s.contains("- " + ELogLevel.MINOR + " :")) {
+				last = new StepMinor(s);
 			} else if(s.contains("- " + ELogLevel.PICTURE + " :")) {
 				last = new StepPicture(s);
 			} else if(s.contains("- " + ELogLevel.TIME + " :")) {
