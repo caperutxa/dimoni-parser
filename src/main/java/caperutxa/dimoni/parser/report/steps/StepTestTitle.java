@@ -3,7 +3,7 @@ package caperutxa.dimoni.parser.report.steps;
 import caperutxa.dimoni.parser.constants.ETestDeclaration;
 import caperutxa.dimoni.parser.report.ReportStep;
 
-public class TestTitle extends ReportStep {
+public class StepTestTitle extends ReportStep {
 
 	String testName = "";
 	String startDate = "";
@@ -11,11 +11,11 @@ public class TestTitle extends ReportStep {
 	String totalTime = "";
 	String alertClass = "alert alert-success";
 	
-	public TestTitle() {
+	public StepTestTitle() {
 		super("Nothing to pass");
 	}
 	
-	public TestTitle(String content) {
+	public StepTestTitle(String content) {
 		super(content);
 		iconClass = "glyphicon glyphicon-thumbs-up";
 	}

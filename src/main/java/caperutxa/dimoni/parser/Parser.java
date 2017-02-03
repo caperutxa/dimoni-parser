@@ -25,7 +25,7 @@ import caperutxa.dimoni.parser.constants.ETimes;
 import caperutxa.dimoni.parser.manager.IterationTestManager;
 import caperutxa.dimoni.parser.model.LogModel;
 import caperutxa.dimoni.parser.report.ReportsHTML;
-import caperutxa.dimoni.parser.report.steps.DebugStep;
+import caperutxa.dimoni.parser.report.steps.StepDebug;
 import caperutxa.dimoni.parser.report.steps.StepInternalParseError;
 
 public class Parser {
@@ -107,7 +107,7 @@ public class Parser {
 				.append(" : ")
 				.append(message);
 		
-		reports.getHtmlConsole().add(new DebugStep(content.toString()));
+		reports.getHtmlConsole().add(new StepDebug(content.toString()));
 	}
 	
 	/**

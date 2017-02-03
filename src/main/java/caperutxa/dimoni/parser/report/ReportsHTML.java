@@ -7,10 +7,10 @@ import java.util.Map;
 import caperutxa.dimoni.parser.constants.ELogLevel;
 import caperutxa.dimoni.parser.constants.ETimes;
 import caperutxa.dimoni.parser.model.LogModel;
-import caperutxa.dimoni.parser.report.steps.ConsoleStep;
-import caperutxa.dimoni.parser.report.steps.DebugStep;
-import caperutxa.dimoni.parser.report.steps.InfoStep;
-import caperutxa.dimoni.parser.report.steps.PictureStep;
+import caperutxa.dimoni.parser.report.steps.StepConsole;
+import caperutxa.dimoni.parser.report.steps.StepDebug;
+import caperutxa.dimoni.parser.report.steps.StepInfo;
+import caperutxa.dimoni.parser.report.steps.StepPicture;
 import caperutxa.dimoni.parser.report.steps.StepBlocker;
 import caperutxa.dimoni.parser.report.steps.StepCritical;
 import caperutxa.dimoni.parser.report.steps.StepError;
@@ -18,9 +18,9 @@ import caperutxa.dimoni.parser.report.steps.StepInternalError;
 import caperutxa.dimoni.parser.report.steps.StepSuccess;
 import caperutxa.dimoni.parser.report.steps.StepTest;
 import caperutxa.dimoni.parser.report.steps.StepWarning;
-import caperutxa.dimoni.parser.report.steps.TestTitle;
-import caperutxa.dimoni.parser.report.steps.TimeStep;
-import caperutxa.dimoni.parser.report.steps.TrivialStep;
+import caperutxa.dimoni.parser.report.steps.StepTestTitle;
+import caperutxa.dimoni.parser.report.steps.StepTime;
+import caperutxa.dimoni.parser.report.steps.StepTrivial;
 
 
 /**
@@ -112,7 +112,7 @@ public class ReportsHTML {
 	 * @param list
 	 */
 	void extractContent(List<String> list) {
-		ReportStep last = new DebugStep("");
+		ReportStep last = new StepDebug("");
 		boolean add = true;
 		
 		for(String s : list) {
@@ -121,7 +121,7 @@ public class ReportsHTML {
 			if(s.contains("- " + ELogLevel.TEST + " :")
 					|| s.contains("- " + ELogLevel.DEBUG + " :")
 			) {
-				last = new DebugStep(s);
+				last = new StepDebug(s);
 			} else if(s.contains("- " + ELogLevel.BLOCKER + " :")) {
 				last = new StepBlocker(s);
 			} else if(s.contains("- " + ELogLevel.CRITICAL + " :")) {
@@ -129,15 +129,15 @@ public class ReportsHTML {
 			} else if(s.contains("- " + ELogLevel.ERROR + " :")) {
 				last = new StepError(s);
 			} else if(s.contains("- " + ELogLevel.INFO + " :")) {
-				last = new InfoStep(s);
+				last = new StepInfo(s);
 			} else if(s.contains("- " + ELogLevel.INTERNAL_ERROR + " :")) {
 				last = new StepInternalError(s);
 			} else if(s.contains("- " + ELogLevel.PICTURE + " :")) {
-				last = new PictureStep(s);
+				last = new StepPicture(s);
 			} else if(s.contains("- " + ELogLevel.TIME + " :")) {
-				last = new TimeStep(s);
+				last = new StepTime(s);
 			} else if(s.contains("- " + ELogLevel.TRIVIAL + " :")) {
-				last = new TrivialStep(s);
+				last = new StepTrivial(s);
 			} else if(s.contains("- " + ELogLevel.STEP + " :")) {
 				last = new StepTest(s);
 			} else if(s.contains("- " + ELogLevel.SUCCESS + " :")) {
@@ -169,7 +169,7 @@ public class ReportsHTML {
 	 */
 	public void extractConsoleContent(List<String> list) {
 		for(String s : list) {
-			htmlConsole.add(new ConsoleStep(s));
+			htmlConsole.add(new StepConsole(s));
 		}
 	}
 	
@@ -238,7 +238,7 @@ public class ReportsHTML {
 	 * @return
 	 */
 	String getHTMLTitle() {
-		TestTitle t = new TestTitle();
+		StepTestTitle t = new StepTestTitle();
 		t.declareTestResults(logModel.isTestSuccess(), logModel.getTestResultDeclaration());
 		t.setTestName(logModel.getTestNameAsString());
 		t.setStartDate(logModel.getTestStartTimeAsString());

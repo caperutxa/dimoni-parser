@@ -2,12 +2,12 @@ package caperutxa.dimoni.parser.report.steps;
 
 import caperutxa.dimoni.parser.report.ReportStep;
 
-public class PictureStep extends ReportStep {
+public class StepPicture extends ReportStep {
 
 	String imgPath = "";
 	String parseContent = "";
 	
-	public PictureStep(String content) {
+	public StepPicture(String content) {
 		super(content);
 		iconClass = "glyphicon glyphicon-picture";
 		cssClass = "col-xs-11 col-xs-offset-1";

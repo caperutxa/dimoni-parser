@@ -2,13 +2,13 @@ package caperutxa.dimoni.parser.report.steps;
 
 import caperutxa.dimoni.parser.report.ReportStep;
 
-public class TimeStep extends ReportStep {
+public class StepTime extends ReportStep {
 
 	String time = "";
 	String timeType = "";
 	String page = "";
 	
-	public TimeStep(String content) {
+	public StepTime(String content) {
 		super(content);
 		iconClass = "glyphicon glyphicon-time";
 		cssClass = "col-xs-11 col-xs-offset-1";

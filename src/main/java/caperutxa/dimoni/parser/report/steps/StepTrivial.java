@@ -2,12 +2,12 @@ package caperutxa.dimoni.parser.report.steps;
 
 import caperutxa.dimoni.parser.report.ReportStep;
 
-public class InfoStep extends ReportStep {
+public class StepTrivial extends ReportStep {
 
-	public InfoStep(String content) {
+	public StepTrivial(String content) {
 		super(content);
-		iconClass = "glyphicon glyphicon-info-sign";
-		cssClass = "col-xs-11 col-xs-offset-1 text-info";
+		iconClass = "glyphicon glyphicon-leaf";
+		cssClass = "col-xs-11 col-xs-offset-1 text-muted small";
 	}
 
 	@Override
