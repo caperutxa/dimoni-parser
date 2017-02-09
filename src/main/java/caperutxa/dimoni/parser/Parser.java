@@ -165,6 +165,10 @@ public class Parser {
 		for(String s : list) {
 			if(s.contains("- " + ELogLevel.BLOCKER + " :")) {
 				addLogLevelDeclarationToTestModel(ELogLevel.BLOCKER);
+			} else if(s.contains("- " + ELogLevel.CONSOLE_ERROR + " :")) {
+				addLogLevelDeclarationToTestModel(ELogLevel.CONSOLE_ERROR);
+			} else if(s.contains("- " + ELogLevel.CONSOLE_WARNING + " :")) {
+				addLogLevelDeclarationToTestModel(ELogLevel.CONSOLE_WARNING);
 			} else if (s.contains("- " + ELogLevel.CRITICAL + " :")) {
 				addLogLevelDeclarationToTestModel(ELogLevel.CRITICAL);
 			} else if(s.contains("- " + ELogLevel.ERROR + " :")) {
@@ -188,7 +192,8 @@ public class Parser {
 		if(logModel.getLogLevelDeclaration().containsKey(ELogLevel.BLOCKER)
 				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.CRITICAL)
 				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.ERROR)
-		){
+				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.CONSOLE_ERROR)
+		) {
 			logModel.setTestSuccess(false);
 			logModel.setTestResultDeclaration(ETestDeclaration.ERROR);
 		} else if(logModel.getLogLevelDeclaration().containsKey(ELogLevel.WARNING)) {
@@ -196,7 +201,9 @@ public class Parser {
 			logModel.setTestResultDeclaration(ETestDeclaration.WARNING);
 		} else if(logModel.getLogLevelDeclaration().containsKey(ELogLevel.INTERNAL_ERROR)
 				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.MAJOR)
-				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.MINOR)) {
+				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.MINOR)
+				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.CONSOLE_WARNING)
+		) {
 			logModel.setTestSuccess(true);
 			logModel.setTestResultDeclaration(ETestDeclaration.MINOR);
 		} else {

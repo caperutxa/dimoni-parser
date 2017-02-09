@@ -99,6 +99,8 @@ public class ParserTest {
 		Assert.assertEquals(ETestDeclaration.ERROR, Parser.logModel.getTestResultDeclaration());
 		
 		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.BLOCKER));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.CONSOLE_ERROR));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.CONSOLE_WARNING));
 		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.CRITICAL));
 		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.ERROR));
 		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.INTERNAL_ERROR));
