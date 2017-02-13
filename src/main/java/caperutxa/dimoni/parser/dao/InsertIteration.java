@@ -26,7 +26,7 @@ public class InsertIteration extends BaseDAO {
 				.append(" VALUES (?,?,?,?,?,?,?,?,?) ");
 		
 		PreparedStatement statement = connection.prepareStatement(query.toString(), Statement.RETURN_GENERATED_KEYS);
-		statement.setString(1, model.getTestNameAsString());
+		statement.setString(1, model.getLastTestName());
 		statement.setString(2, model.getEnvironment());
 		statement.setBoolean(3, model.isTestSuccess());
 		statement.setString(4, model.getTestResultDeclaration().name());

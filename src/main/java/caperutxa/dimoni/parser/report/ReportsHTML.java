@@ -248,7 +248,7 @@ public class ReportsHTML {
 	String getHTMLTitle() {
 		StepTestTitle t = new StepTestTitle();
 		t.declareTestResults(logModel.isTestSuccess(), logModel.getTestResultDeclaration());
-		t.setTestName(logModel.getTestNameAsString());
+		t.setTestName(logModel.getLastTestName());
 		t.setStartDate(logModel.getTestStartTimeAsString());
 		t.setTotalTime(logModel.getTotalTestTime());
 		

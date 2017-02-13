@@ -63,6 +63,19 @@ public class LogModel {
 		return name.toString();
 	}
 	
+	/**
+	 * Return the last test name in the list (detected)
+	 * or a default message if the list is empty
+	 * @return
+	 */
+	public String getLastTestName() {
+		if(!testName.isEmpty()) {
+			return testName.get(testName.size() - 1);
+		}
+		
+		return "Test name not found";
+	}
+	
 	public String getTestStartTimeAsString() {
 		return dateTimeFormatter.print(startTestTime);
 	}
@@ -115,7 +128,7 @@ public class LogModel {
 			.append(entry.getValue());
 		}
 		
-		return s.toString();
+		return s.toString().substring(2);
 	}
 	
 	
