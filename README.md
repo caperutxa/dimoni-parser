@@ -20,8 +20,11 @@ Any error with the parser is added to the end of the html report
 ### Log Levels
 * BLOCKER
 * CONSOLE 
+* CONSOLE_WARNING
+* CONSOLE_ERROR
 * CRITICAL
 * DEBUG 
+* ENVIRONMENT
 * ERROR 
 * INFO
 * INTERNAL_ERROR 
