@@ -184,6 +184,9 @@ public class Parser {
 			} else if(s.contains("- " + ELogLevel.TEST + " :")) {
 				addLogLevelDeclarationToTestModel(ELogLevel.OTHERS);
 				logModel.getTestName().add(s.split("- " + ELogLevel.TEST + " :")[1]);
+			} else if(s.contains("- " + ELogLevel.ENVIRONMENT + " :")) {
+				addLogLevelDeclarationToTestModel(ELogLevel.OTHERS);
+				logModel.setEnvironmentFromLog(s);
 			} else {
 				addLogLevelDeclarationToTestModel(ELogLevel.OTHERS);
 			}

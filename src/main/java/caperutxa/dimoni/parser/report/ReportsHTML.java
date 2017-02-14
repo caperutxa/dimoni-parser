@@ -128,8 +128,16 @@ public class ReportsHTML {
 				last = new StepBlocker(s);
 			} else if(s.contains("- " + ELogLevel.CONSOLE + " :")) {
 				last = new StepConsole(s);
+			} else if(s.contains("- " + ELogLevel.CONSOLE_ERROR + " :")) {
+				last = new StepConsole(s);
+				last.setCssClass("col-xs-11 col-xs-offset-1 text-danger");
+			} else if(s.contains("- " + ELogLevel.CONSOLE_WARNING + " :")) {
+				last = new StepConsole(s);
+				last.setCssClass("col-xs-11 col-xs-offset-1 text-warning");
 			} else if(s.contains("- " + ELogLevel.CRITICAL + " :")) {
 				last = new StepCritical(s);
+			} else if(s.contains("- " + ELogLevel.ENVIRONMENT + " :")) {
+				last = new StepInfo(s);
 			} else if(s.contains("- " + ELogLevel.ERROR + " :")) {
 				last = new StepError(s);
 			} else if(s.contains("- " + ELogLevel.INFO + " :")) {
@@ -192,7 +200,7 @@ public class ReportsHTML {
 				.append("<meta name=\"author\" content=\"Caperutxa\" />")
 				.append("<link rel=\"icon\" href=\"http://icon-icons.com/icons2/586/PNG/128/robot-with-plug_icon-icons.com_55259.png\">")
 				.append("<title>")
-				.append(logModel.getTestNameAsString())
+				.append(logModel.getLastTestName())
 				.append("</title>")
 				.append("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">")
 				//.append("<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>")

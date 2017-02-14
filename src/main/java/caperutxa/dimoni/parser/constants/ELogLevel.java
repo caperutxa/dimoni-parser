@@ -7,6 +7,9 @@ package caperutxa.dimoni.parser.constants;
  * For each new level you need to define in Parser.setDeclarationLevel()
  * * If this new type counts in some category
  * * and if is the case set the correct test result declaration
+ * ReportsHTML.extract content
+ * * Define which report step will use
+ * * If you want a new one first create it inside report.steps package
  * 
  * And for testing
  * * modify allTypesOfLogs file to add the new types
@@ -22,6 +25,7 @@ public enum ELogLevel {
 	, CONSOLE_ERROR (6)
 	, CRITICAL(2)
 	, DEBUG (10)
+	, ENVIRONMENT (5)
 	, ERROR (3)
 	, INFO (5)
 	, INTERNAL_ERROR (4)

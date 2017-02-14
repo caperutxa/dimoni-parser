@@ -14,6 +14,7 @@ import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
 
+import caperutxa.dimoni.parser.Parser;
 import caperutxa.dimoni.parser.constants.Constants;
 import caperutxa.dimoni.parser.constants.ELogLevel;
 import caperutxa.dimoni.parser.constants.ETestDeclaration;
@@ -129,6 +130,21 @@ public class LogModel {
 		}
 		
 		return s.toString().substring(2);
+	}
+	
+	/**
+	 * Set test environment to the environment attribute.
+	 * This will be used to leave logs in DB
+	 * 
+	 * @param s the raw log string
+	 */
+	public void setEnvironmentFromLog(String s) {
+		try {
+			environment = s.split("- " + ELogLevel.ENVIRONMENT + " :")[1];
+		} catch(Exception e) {
+			Parser.addHtmlConsoleStep(ELogLevel.INTERNAL_ERROR, "Unable to parse environment from logs");
+			Parser.addHtmlConsoleStep(ELogLevel.INTERNAL_ERROR, e.toString());
+		}
 	}
 	
 	

@@ -107,7 +107,7 @@ public class ParserTest {
 		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.MAJOR));
 		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.MINOR));
 		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.WARNING));
-		Assert.assertEquals(Integer.valueOf(10), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.OTHERS));
+		Assert.assertEquals(Integer.valueOf(13), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.OTHERS));
 	}
 	
 }

@@ -1,6 +1,9 @@
 2017-01-28 23:47:40.084 - DEBUG : Start test 20170128_234740_082
+2017-01-28 23:47:42.605 - TEST : Test name 1
+2017-01-28 23:47:42.605 - TEST : Test name 2
 2017-01-28 23:47:42.605 - TEST : All types of logs
 2017-01-28 23:47:42.606 - INFO : Environment : LIVE
+2017-01-28 23:47:42.606 - ENVIRONMENT : LIVE
 2017-01-28 23:47:42.607 - STEP : Search in Google
 2017-01-28 23:47:42.608 - INTERNAL_ERROR : Navigate to https://www.google.com
 2017-01-28 23:47:57.146 - SUCCESS : Success test rule
