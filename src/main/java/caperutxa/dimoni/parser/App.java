@@ -137,14 +137,20 @@ public class App
 	 * @return
 	 */
 	public static String logLevelFromConfig(Properties prop, String level) {
+		String l = level;
+		
 		try {
-			return prop.getProperty(level);
+			l =  prop.getProperty("logLevel." + level);
+			if(null == l) {
+				l = level;
+				System.out.println("The " + level + " is null. Please ckeck!");
+			}
 		} catch(Exception e) {
 			System.out.println("Troubles with " + level + " level. Use default vale (" + level + ")");
 			System.out.println(e.toString());
 		}
 		
-		return level;
+		return l;
 	}
 	
 }

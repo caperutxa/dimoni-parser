@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import caperutxa.dimoni.parser.constants.Constants;
+import caperutxa.dimoni.parser.constants.LogLevel;
 
 /**
  * 
@@ -101,6 +102,9 @@ public class AppTest {
 		Constants.LOG_DATETIME_FORMAT = "1";
 		
 		App.applyDefaultConfig();
+		
+		Assert.assertEquals("- BLOCKER :", LogLevel.BLOCKER);
+		Assert.assertEquals("- OTHERS :", LogLevel.OTHERS);
 		
 		Assert.assertEquals(false, Constants.USE_DB);
 		Assert.assertEquals("jdbc:mysql://localhost:3306/selenium", Constants.CONNECTION_STRING);
