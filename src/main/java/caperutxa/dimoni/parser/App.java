@@ -12,6 +12,7 @@ import java.util.Properties;
 import org.joda.time.format.DateTimeFormat;
 
 import caperutxa.dimoni.parser.constants.Constants;
+import caperutxa.dimoni.parser.constants.LogLevel;
 
 /**
  * Entry point form console
@@ -26,6 +27,7 @@ import caperutxa.dimoni.parser.constants.Constants;
 public class App 
 {
     public static List<String> fileNames;
+    public static String defaultLogLevelString = "default";
 	
 	public static void main( String[] args )
     {
@@ -46,7 +48,28 @@ public class App
 		try {
 			input = new FileInputStream("config/parser.properties");
 			prop.load(input);
-
+			
+			LogLevel.BLOCKER = logLevelFromConfig(prop, "BLOCKER");
+			LogLevel.CONSOLE = logLevelFromConfig(prop, "CONSOLE");
+			LogLevel.CONSOLE_WARNING = logLevelFromConfig(prop, "CONSOLE_WARNING");
+			LogLevel.CONSOLE_ERROR = logLevelFromConfig(prop, "CONSOLE_ERROR");
+			LogLevel.CRITICAL = logLevelFromConfig(prop, "CRITICAL");
+			LogLevel.DEBUG = logLevelFromConfig(prop, "DEBUG");
+			LogLevel.ENVIRONMENT = logLevelFromConfig(prop, "ENVIRONMENT");
+			LogLevel.ERROR = logLevelFromConfig(prop, "ERROR");
+			LogLevel.INFO = logLevelFromConfig(prop, "INFO");
+			LogLevel.INTERNAL_ERROR = logLevelFromConfig(prop, "INTERNAL_ERROR");
+			LogLevel.MAJOR = logLevelFromConfig(prop, "MAJOR");
+			LogLevel.MINOR = logLevelFromConfig(prop, "MINOR");
+			LogLevel.PICTURE = logLevelFromConfig(prop, "PICTURE");
+			LogLevel.STEP = logLevelFromConfig(prop, "STEP");
+			LogLevel.SUCCESS = logLevelFromConfig(prop, "SUCCESS");
+			LogLevel.TEST = logLevelFromConfig(prop, "TEST");
+			LogLevel.TIME = logLevelFromConfig(prop, "TIME");
+			LogLevel.TRIVIAL = logLevelFromConfig(prop, "TRIVIAL");
+			LogLevel.WARNING = logLevelFromConfig(prop, "WARNING");
+			LogLevel.OTHERS = logLevelFromConfig(prop, "OTHERS");
+			
 			Constants.USE_DB = Boolean.valueOf(prop.getProperty("DB.USE"));
 			Constants.CONNECTION_STRING = prop.getProperty("DB.CONNECTION_STRING");
 			Constants.JDBC_DRIVER = prop.getProperty("DB.JDBC_DRIVER");
@@ -105,4 +128,23 @@ public class App
         	}
 		}
 	}
+	
+	/**
+	 * The levels should be in the configuration file
+	 * but if they are missing the process must go on
+	 * 
+	 * @param level
+	 * @return
+	 */
+	public static String logLevelFromConfig(Properties prop, String level) {
+		try {
+			return prop.getProperty(level);
+		} catch(Exception e) {
+			System.out.println("Troubles with " + level + " level. Use default vale (" + level + ")");
+			System.out.println(e.toString());
+		}
+		
+		return level;
+	}
+	
 }

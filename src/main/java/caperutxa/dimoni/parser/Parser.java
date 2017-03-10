@@ -37,10 +37,11 @@ public class Parser {
 	public static StringBuilder html;
 	
 	/**
-	 * The process consist in:
-	 * Parse file and return a list of string
-	 * Extract information of each file
-	 * At the end create the reporting
+	 * The process basis is:
+	 *  - Parse file and return a list of strings
+	 *  - Extract information of each file
+	 *  - At the end create the reporting
+	 *  
 	 * @param args
 	 */
 	public static void startProcess(List<String> args) {

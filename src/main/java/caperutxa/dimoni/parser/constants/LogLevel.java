@@ -3,7 +3,7 @@ package caperutxa.dimoni.parser.constants;
 /**
  * Log level strings to parse
  * The idea is allow to modify those strings via properties file
- * and declare ELogLevel enumaration as deprecated
+ * and declare ELogLevel enumeration as deprecated
  * 
  * The log level value is lost during the migration
  * but never was fully implemented
