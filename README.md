@@ -7,12 +7,12 @@ During my years of code automated testing I created several types of html report
 [htmlExample](samples/SuccessDeclaration.testlog.html)
 
 ### How to use
-The key idea is just code the robot to leave a log file and focus on his functionality, performance or whatever other issues. Just take care that your logs lines are writen with this format:
+The key idea is just code the robot to leave a log file and focus on his functionality, performance or whatever other issues. Just take care that your logs lines are written with this format:
 
-* [date-time-format] - [LOG LEVEL] : [Message]
-* The date format is configurable via parser.properties file. By default is "yyyy-MM-dd HH:mm:ss.SSS"
-* The log level is an enum and the parser looks for this string "- LOG_LEVEL :" strictly ( IMPORTANTS! are the - and : )
-* The message is your message
+##### date-time-format LOG LEVEL Message
+* date-time-format is configurable via parser.properties file. By default is "yyyy-MM-dd HH:mm:ss.SSS" (the " will be removed)
+* LOG LEVEL is an string configurable via config/parser.properties file (note that the " is not removed and is considered part of the string)
+* Message is your message
 
 If a line does not contains this format is just added to the previous one.
 Any error with the parser is added to the end of the html report
@@ -41,7 +41,7 @@ Any error with the parser is added to the end of the html report
 
 #### Special cases
 * TEST - This line is used to declare the test name but the style is the debug style
-* TIME - The message will be parsed using a separator string (by default #@#) and the expected structure is *"time #@# [TIME_TYPE] #@# [message]"* . This seapartor is configured via parser.properties
+* TIME - The message will be parsed using a separator string (by default #@#) and the expected structure is *"time #@# [TIME_TYPE] #@# [message]"* . This separtor is configured via parser.properties (not implemented)
 
 ## Use via console
 Is possible to use the parser via console commad. One jar is created with all dependencies and another (called original) without that ones:
@@ -54,5 +54,4 @@ Is possible to use the parser via console commad. One jar is created with all de
 
 ## Project
 Is a Maven project.
-
 Eclipse files are ignored

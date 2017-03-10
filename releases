@@ -12,6 +12,5 @@ Versions
 --------
 0.1 split parser from dimoni.spider.
 0.2 Alpha testing with external files
-0.3 Put into github
-0.3.1 add console errors and warnings
-0.3.2 use only one test name (the last one detected)
+0.3 Put into github and beta testing
+0.4 Put log level strings into configuration file
