@@ -4,7 +4,7 @@
 
 	<groupId>caperutxa.dimoni</groupId>
 	<artifactId>parser</artifactId>
-	<version>0.3.3</version>
+	<version>0.4.0</version>
 	<packaging>jar</packaging>
 
 	<name>parser</name>

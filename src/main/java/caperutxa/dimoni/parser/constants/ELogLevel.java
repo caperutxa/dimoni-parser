@@ -18,6 +18,7 @@ package caperutxa.dimoni.parser.constants;
  * @author caperutxa
  *
  */
+@Deprecated
 public enum ELogLevel {
 	BLOCKER (1)
 	, CONSOLE (11)
