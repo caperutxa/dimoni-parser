@@ -16,9 +16,9 @@ import org.joda.time.format.PeriodFormatterBuilder;
 
 import caperutxa.dimoni.parser.Parser;
 import caperutxa.dimoni.parser.constants.Constants;
-import caperutxa.dimoni.parser.constants.ELogLevel;
 import caperutxa.dimoni.parser.constants.ETestDeclaration;
 import caperutxa.dimoni.parser.constants.ETimes;
+import caperutxa.dimoni.parser.constants.LogLevel;
 
 /**
  * Each log file is parsed looking for some expectatives
@@ -44,7 +44,7 @@ public class LogModel {
 	List<String> logFileList;
 	String logReportFileAbsolutePath;
 	
-	Map<ELogLevel, Integer> logLevelDeclaration = new LinkedHashMap<ELogLevel, Integer>();
+	Map<String, Integer> logLevelDeclaration = new LinkedHashMap<String, Integer>();
 	Map<ETimes, Map<String, Long>> testTimeList = new LinkedHashMap<ETimes, Map<String, Long>>();
 	
 	/**
@@ -122,7 +122,7 @@ public class LogModel {
 		
 		StringBuilder s = new StringBuilder();
 		
-		for(Map.Entry<ELogLevel, Integer> entry : logLevelDeclaration.entrySet()) {
+		for(Map.Entry<String, Integer> entry : logLevelDeclaration.entrySet()) {
 			s.append(" , ")
 			.append(entry.getKey())
 			.append(" : ")
@@ -140,10 +140,10 @@ public class LogModel {
 	 */
 	public void setEnvironmentFromLog(String s) {
 		try {
-			environment = s.split("- " + ELogLevel.ENVIRONMENT + " :")[1];
+			environment = s.split(LogLevel.ENVIRONMENT)[1];
 		} catch(Exception e) {
-			Parser.addHtmlConsoleStep(ELogLevel.INTERNAL_ERROR, "Unable to parse environment from logs");
-			Parser.addHtmlConsoleStep(ELogLevel.INTERNAL_ERROR, e.toString());
+			Parser.addHtmlConsoleStep(LogLevel.INTERNAL_ERROR, "Unable to parse environment from logs");
+			Parser.addHtmlConsoleStep(LogLevel.INTERNAL_ERROR, e.toString());
 		}
 	}
 	
@@ -209,10 +209,10 @@ public class LogModel {
 	public void setLogReportFileAbsolutePath(String logReportFileAbsolutePath) {
 		this.logReportFileAbsolutePath = logReportFileAbsolutePath;
 	}
-	public Map<ELogLevel, Integer> getLogLevelDeclaration() {
+	public Map<String, Integer> getLogLevelDeclaration() {
 		return logLevelDeclaration;
 	}
-	public void setLogLevelDeclaration(Map<ELogLevel, Integer> logLevelDeclaration) {
+	public void setLogLevelDeclaration(Map<String, Integer> logLevelDeclaration) {
 		this.logLevelDeclaration = logLevelDeclaration;
 	}
 	public Map<ETimes, Map<String, Long>> getTestTimeList() {

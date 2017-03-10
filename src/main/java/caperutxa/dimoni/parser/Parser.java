@@ -19,9 +19,9 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import caperutxa.dimoni.parser.constants.Constants;
-import caperutxa.dimoni.parser.constants.ELogLevel;
 import caperutxa.dimoni.parser.constants.ETestDeclaration;
 import caperutxa.dimoni.parser.constants.ETimes;
+import caperutxa.dimoni.parser.constants.LogLevel;
 import caperutxa.dimoni.parser.manager.IterationTestManager;
 import caperutxa.dimoni.parser.model.LogModel;
 import caperutxa.dimoni.parser.report.ReportsHTML;
@@ -83,11 +83,11 @@ public class Parser {
 	 * @param level
 	 * @param message
 	 */
-	public static void addInternalParseError(ELogLevel level, String message) {
+	public static void addInternalParseError(String level, String message) {
 		StringBuilder content = new StringBuilder()
 				.append(logTimeFormat.format(new Date()))
 				.append(" - ")
-				.append(level.name())
+				.append(level)
 				.append(" : ")
 				.append(message);
 		
@@ -100,11 +100,11 @@ public class Parser {
 	 * @param level
 	 * @param message
 	 */
-	public static void addHtmlConsoleStep(ELogLevel level, String message) {
+	public static void addHtmlConsoleStep(String level, String message) {
 		StringBuilder content = new StringBuilder()
 				.append(logTimeFormat.format(new Date()))
 				.append(" - ")
-				.append(level.name())
+				.append(level)
 				.append(" : ")
 				.append(message);
 		
@@ -117,12 +117,12 @@ public class Parser {
 	 * @param e
 	 */
 	public static void logInternaleError(Exception e) {
-		addInternalParseError(ELogLevel.INTERNAL_ERROR, e.toString());
+		addInternalParseError(LogLevel.INTERNAL_ERROR, e.toString());
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		e.printStackTrace(pw);
-		addInternalParseError(ELogLevel.INTERNAL_ERROR, sw.toString());
-		addInternalParseError(ELogLevel.DEBUG, "End internal error");
+		addInternalParseError(LogLevel.INTERNAL_ERROR, sw.toString());
+		addInternalParseError(LogLevel.DEBUG, "End internal error");
 	}
 	
 	/**
@@ -164,49 +164,51 @@ public class Parser {
 	 */
 	public static void setDeclarationLevel(List<String> list) {
 		for(String s : list) {
-			if(s.contains("- " + ELogLevel.BLOCKER + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.BLOCKER);
-			} else if(s.contains("- " + ELogLevel.CONSOLE_ERROR + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.CONSOLE_ERROR);
-			} else if(s.contains("- " + ELogLevel.CONSOLE_WARNING + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.CONSOLE_WARNING);
-			} else if (s.contains("- " + ELogLevel.CRITICAL + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.CRITICAL);
-			} else if(s.contains("- " + ELogLevel.ERROR + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.ERROR);
-			} else if(s.contains("- " + ELogLevel.INTERNAL_ERROR + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.INTERNAL_ERROR);
-			} else if(s.contains("- " + ELogLevel.MAJOR + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.MAJOR);
-			} else if(s.contains("- " + ELogLevel.MINOR + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.MINOR);
-			} else if(s.contains("- " + ELogLevel.WARNING + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.WARNING);
-			} else if(s.contains("- " + ELogLevel.TEST + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.OTHERS);
-				logModel.getTestName().add(s.split("- " + ELogLevel.TEST + " :")[1]);
-			} else if(s.contains("- " + ELogLevel.ENVIRONMENT + " :")) {
-				addLogLevelDeclarationToTestModel(ELogLevel.OTHERS);
+			if(s.contains(LogLevel.BLOCKER)) {
+				addLogLevelDeclarationToTestModel(LogLevel.BLOCKER);
+			} else if(s.contains(LogLevel.CONSOLE_ERROR)) {
+				addLogLevelDeclarationToTestModel(LogLevel.CONSOLE_ERROR);
+			} else if(s.contains(LogLevel.CONSOLE_WARNING)) {
+				addLogLevelDeclarationToTestModel(LogLevel.CONSOLE_WARNING);
+			} else if (s.contains(LogLevel.CRITICAL)) {
+				addLogLevelDeclarationToTestModel(LogLevel.CRITICAL);
+			} else if(s.contains(LogLevel.ERROR)) {
+				addLogLevelDeclarationToTestModel(LogLevel.ERROR);
+			} else if(s.contains(LogLevel.INTERNAL_ERROR)) {
+				addLogLevelDeclarationToTestModel(LogLevel.INTERNAL_ERROR);
+			} else if(s.contains(LogLevel.MAJOR)) {
+				addLogLevelDeclarationToTestModel(LogLevel.MAJOR);
+			} else if(s.contains(LogLevel.MINOR)) {
+				addLogLevelDeclarationToTestModel(LogLevel.MINOR);
+			} else if(s.contains(LogLevel.WARNING)) {
+				addLogLevelDeclarationToTestModel(LogLevel.WARNING);
+			} else if(s.contains(LogLevel.TEST)) {
+				addLogLevelDeclarationToTestModel(LogLevel.OTHERS);
+				logModel.getTestName().add(s.split(LogLevel.TEST)[1]);
+			} else if(s.contains(LogLevel.ENVIRONMENT)) {
+				addLogLevelDeclarationToTestModel(LogLevel.OTHERS);
 				logModel.setEnvironmentFromLog(s);
 			} else {
-				addLogLevelDeclarationToTestModel(ELogLevel.OTHERS);
+				addLogLevelDeclarationToTestModel(LogLevel.OTHERS);
 			}
 		}
 		
-		if(logModel.getLogLevelDeclaration().containsKey(ELogLevel.BLOCKER)
-				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.CRITICAL)
-				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.ERROR)
-				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.CONSOLE_ERROR)
+		if(logModel.getLogLevelDeclaration().containsKey(LogLevel.BLOCKER)
+				|| logModel.getLogLevelDeclaration().containsKey(LogLevel.CRITICAL)
+				|| logModel.getLogLevelDeclaration().containsKey(LogLevel.ERROR)
+				|| logModel.getLogLevelDeclaration().containsKey(LogLevel.CONSOLE_ERROR)
 		) {
 			logModel.setTestSuccess(false);
 			logModel.setTestResultDeclaration(ETestDeclaration.ERROR);
-		} else if(logModel.getLogLevelDeclaration().containsKey(ELogLevel.WARNING)) {
+		} else if(
+				logModel.getLogLevelDeclaration().containsKey(LogLevel.WARNING)
+		) {
 			logModel.setTestSuccess(true);
 			logModel.setTestResultDeclaration(ETestDeclaration.WARNING);
-		} else if(logModel.getLogLevelDeclaration().containsKey(ELogLevel.INTERNAL_ERROR)
-				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.MAJOR)
-				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.MINOR)
-				|| logModel.getLogLevelDeclaration().containsKey(ELogLevel.CONSOLE_WARNING)
+		} else if(logModel.getLogLevelDeclaration().containsKey(LogLevel.INTERNAL_ERROR)
+				|| logModel.getLogLevelDeclaration().containsKey(LogLevel.MAJOR)
+				|| logModel.getLogLevelDeclaration().containsKey(LogLevel.MINOR)
+				|| logModel.getLogLevelDeclaration().containsKey(LogLevel.CONSOLE_WARNING)
 		) {
 			logModel.setTestSuccess(true);
 			logModel.setTestResultDeclaration(ETestDeclaration.MINOR);
@@ -221,7 +223,7 @@ public class Parser {
 	 * 
 	 * @param l
 	 */
-	static void addLogLevelDeclarationToTestModel(ELogLevel l) {
+	static void addLogLevelDeclarationToTestModel(String l) {
 		int n = 1;
 		
 		if(logModel.getLogLevelDeclaration().containsKey(l)) {
@@ -273,14 +275,14 @@ public class Parser {
 		for(String s : list) {
 			i++;
 			try {
-				if(s.contains("- " + ELogLevel.STEP + " :")) {
+				if(s.contains(LogLevel.STEP)) {
 					DateTime partial = dateTimeFormatter.parseDateTime(s.substring(0,23));
 					Interval inter = new Interval(stepTime, partial);
 					long ts = (inter.getEndMillis() - inter.getStartMillis());
 					logModel.getTestTimeList().get(ETimes.STEP_TIME).put(stepName + " (" + i + ")", ts);
 					stepTime = partial;
 					stepName = s.split("- STEP : ")[1];
-				} else if(s.contains("- " + ELogLevel.TIME + " :")) {
+				} else if(s.contains(LogLevel.TIME)) {
 					String[] partialTimeLine = s.split(" - TIME : ")[1].split(" #@# ");
 					String name = partialTimeLine[2] + " (" + i + ")";
 					long ts = Long.valueOf(partialTimeLine[0]);

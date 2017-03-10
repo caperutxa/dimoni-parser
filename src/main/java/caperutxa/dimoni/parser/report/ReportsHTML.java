@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import caperutxa.dimoni.parser.constants.ELogLevel;
 import caperutxa.dimoni.parser.constants.ETimes;
+import caperutxa.dimoni.parser.constants.LogLevel;
 import caperutxa.dimoni.parser.model.LogModel;
 import caperutxa.dimoni.parser.report.steps.StepConsole;
 import caperutxa.dimoni.parser.report.steps.StepDebug;
@@ -120,45 +120,45 @@ public class ReportsHTML {
 		for(String s : list) {
 			add = true;
 			
-			if(s.contains("- " + ELogLevel.TEST + " :")
-					|| s.contains("- " + ELogLevel.DEBUG + " :")
+			if(s.contains(LogLevel.TEST)
+					|| s.contains(LogLevel.DEBUG)
 			) {
 				last = new StepDebug(s);
-			} else if(s.contains("- " + ELogLevel.BLOCKER + " :")) {
+			} else if(s.contains(LogLevel.BLOCKER)) {
 				last = new StepBlocker(s);
-			} else if(s.contains("- " + ELogLevel.CONSOLE + " :")) {
+			} else if(s.contains(LogLevel.CONSOLE)) {
 				last = new StepConsole(s);
-			} else if(s.contains("- " + ELogLevel.CONSOLE_ERROR + " :")) {
+			} else if(s.contains(LogLevel.CONSOLE_ERROR)) {
 				last = new StepConsole(s);
 				last.setCssClass("col-xs-11 col-xs-offset-1 text-danger");
-			} else if(s.contains("- " + ELogLevel.CONSOLE_WARNING + " :")) {
+			} else if(s.contains(LogLevel.CONSOLE_WARNING)) {
 				last = new StepConsole(s);
 				last.setCssClass("col-xs-11 col-xs-offset-1 text-warning");
-			} else if(s.contains("- " + ELogLevel.CRITICAL + " :")) {
+			} else if(s.contains(LogLevel.CRITICAL)) {
 				last = new StepCritical(s);
-			} else if(s.contains("- " + ELogLevel.ENVIRONMENT + " :")) {
+			} else if(s.contains(LogLevel.ENVIRONMENT)) {
 				last = new StepInfo(s);
-			} else if(s.contains("- " + ELogLevel.ERROR + " :")) {
+			} else if(s.contains(LogLevel.ERROR)) {
 				last = new StepError(s);
-			} else if(s.contains("- " + ELogLevel.INFO + " :")) {
+			} else if(s.contains(LogLevel.INFO)) {
 				last = new StepInfo(s);
-			} else if(s.contains("- " + ELogLevel.INTERNAL_ERROR + " :")) {
+			} else if(s.contains(LogLevel.INTERNAL_ERROR)) {
 				last = new StepInternalError(s);
-			} else if(s.contains("- " + ELogLevel.MAJOR + " :")) {
+			} else if(s.contains(LogLevel.MAJOR)) {
 				last = new StepMajor(s);
-			} else if(s.contains("- " + ELogLevel.MINOR + " :")) {
+			} else if(s.contains(LogLevel.MINOR)) {
 				last = new StepMinor(s);
-			} else if(s.contains("- " + ELogLevel.PICTURE + " :")) {
+			} else if(s.contains(LogLevel.PICTURE)) {
 				last = new StepPicture(s);
-			} else if(s.contains("- " + ELogLevel.TIME + " :")) {
+			} else if(s.contains(LogLevel.TIME)) {
 				last = new StepTime(s);
-			} else if(s.contains("- " + ELogLevel.TRIVIAL + " :")) {
+			} else if(s.contains(LogLevel.TRIVIAL)) {
 				last = new StepTrivial(s);
-			} else if(s.contains("- " + ELogLevel.STEP + " :")) {
+			} else if(s.contains(LogLevel.STEP)) {
 				last = new StepTest(s);
-			} else if(s.contains("- " + ELogLevel.SUCCESS + " :")) {
+			} else if(s.contains(LogLevel.SUCCESS)) {
 				last = new StepSuccess(s);
-			} else if(s.contains("- " + ELogLevel.WARNING + " :")) {
+			} else if(s.contains(LogLevel.WARNING)) {
 				last = new StepWarning(s);
 			} else {
 				add = false;
@@ -328,7 +328,7 @@ public class ReportsHTML {
 		StringBuilder s = new StringBuilder("<div>")
 				.append("<p class='bg-info h3' style='padding:10px;'> Summary </p>");
 		
-		for(Map.Entry<ELogLevel, Integer> entry :  logModel.getLogLevelDeclaration().entrySet()) {
+		for(Map.Entry<String, Integer> entry :  logModel.getLogLevelDeclaration().entrySet()) {
 			s.append("<div class='row'><div class='col-xs-11 col-xs-offset-1'>");
 			
 			s.append(entry.getKey())

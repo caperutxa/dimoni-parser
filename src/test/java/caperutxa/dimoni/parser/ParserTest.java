@@ -10,8 +10,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import caperutxa.dimoni.parser.constants.Constants;
-import caperutxa.dimoni.parser.constants.ELogLevel;
 import caperutxa.dimoni.parser.constants.ETestDeclaration;
+import caperutxa.dimoni.parser.constants.LogLevel;
 
 public class ParserTest {
 
@@ -98,16 +98,16 @@ public class ParserTest {
 		Assert.assertEquals(false, Parser.logModel.isTestSuccess());
 		Assert.assertEquals(ETestDeclaration.ERROR, Parser.logModel.getTestResultDeclaration());
 		
-		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.BLOCKER));
-		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.CONSOLE_ERROR));
-		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.CONSOLE_WARNING));
-		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.CRITICAL));
-		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.ERROR));
-		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.INTERNAL_ERROR));
-		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.MAJOR));
-		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.MINOR));
-		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.WARNING));
-		Assert.assertEquals(Integer.valueOf(13), Parser.logModel.getLogLevelDeclaration().get(ELogLevel.OTHERS));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(LogLevel.BLOCKER));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(LogLevel.CONSOLE_ERROR));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(LogLevel.CONSOLE_WARNING));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(LogLevel.CRITICAL));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(LogLevel.ERROR));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(LogLevel.INTERNAL_ERROR));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(LogLevel.MAJOR));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(LogLevel.MINOR));
+		Assert.assertEquals(Integer.valueOf(1), Parser.logModel.getLogLevelDeclaration().get(LogLevel.WARNING));
+		Assert.assertEquals(Integer.valueOf(13), Parser.logModel.getLogLevelDeclaration().get(LogLevel.OTHERS));
 	}
 	
 }

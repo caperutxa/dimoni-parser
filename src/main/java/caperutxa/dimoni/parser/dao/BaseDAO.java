@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import caperutxa.dimoni.parser.Parser;
 import caperutxa.dimoni.parser.constants.Constants;
-import caperutxa.dimoni.parser.constants.ELogLevel;
+import caperutxa.dimoni.parser.constants.LogLevel;
 
 /**
  * 
@@ -31,9 +31,9 @@ public class BaseDAO {
 	
 	public void close() throws SQLException {
 		if(null == connection) {
-			Parser.addInternalParseError(ELogLevel.INTERNAL_ERROR, "BaseDAO.close(). The DB connetion is null");
+			Parser.addInternalParseError(LogLevel.INTERNAL_ERROR, "BaseDAO.close(). The DB connetion is null");
 		} else if(connection.isClosed()) {
-			Parser.addInternalParseError(ELogLevel.INTERNAL_ERROR, "BaseDAO.close(). The DB connection is already closed");
+			Parser.addInternalParseError(LogLevel.INTERNAL_ERROR, "BaseDAO.close(). The DB connection is already closed");
 		} else {
 			connection.close();
 		}

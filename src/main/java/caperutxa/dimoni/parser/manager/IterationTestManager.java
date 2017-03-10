@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import caperutxa.dimoni.parser.Parser;
-import caperutxa.dimoni.parser.constants.ELogLevel;
 import caperutxa.dimoni.parser.constants.ETimes;
+import caperutxa.dimoni.parser.constants.LogLevel;
 import caperutxa.dimoni.parser.dao.InsertIteration;
 
 /**
@@ -34,17 +34,17 @@ public class IterationTestManager {
 			ResultSet rs = iteration.insertNewIteration(Parser.logModel);
 			if(rs.next()) {
 				iterationNumber = rs.getInt(1);
-				Parser.addHtmlConsoleStep(ELogLevel.INFO, "New iteration inserted with id : " + iterationNumber);
+				Parser.addHtmlConsoleStep(LogLevel.INFO, "New iteration inserted with id : " + iterationNumber);
 			}
 			
 			for(Map.Entry<ETimes, Map<String, Long>> entry : Parser.logModel.getTestTimeList().entrySet()) {
 				for(Map.Entry<String, Long> partial : entry.getValue().entrySet()) {
 					if(0 < partial.getValue()) {
 						try {
-							Parser.addHtmlConsoleStep(ELogLevel.INFO, "Insert new time iteration : " + iterationNumber + " - " + entry.getKey().name() + " - " + partial.getKey() + " - " + partial.getValue());
+							Parser.addHtmlConsoleStep(LogLevel.INFO, "Insert new time iteration : " + iterationNumber + " - " + entry.getKey().name() + " - " + partial.getKey() + " - " + partial.getValue());
 							iteration.insertPartialTimes(iterationNumber, entry.getKey().name(), partial.getKey().split("\\(")[0], partial.getValue());
 						} catch(com.mysql.cj.jdbc.exceptions.MysqlDataTruncation dt) {
-							Parser.addHtmlConsoleStep(ELogLevel.DEBUG, "iterationNumber=" + iterationNumber + ", Time type=" + entry.getKey().name() + ", time label = " + partial.getKey() + ", time = " + partial.getValue());
+							Parser.addHtmlConsoleStep(LogLevel.DEBUG, "iterationNumber=" + iterationNumber + ", Time type=" + entry.getKey().name() + ", time label = " + partial.getKey() + ", time = " + partial.getValue());
 							Parser.logInternaleError(dt);
 						}
 					}
