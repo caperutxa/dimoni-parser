@@ -31,7 +31,8 @@ public class AppTest {
 	@Test
 	public void runProcessWithDBLogs() {
 		String[] args = new String[] {
-				"-db:true"
+				//"-db:true"
+				"-db:false"
 				, "-d:logs/runProcessWithDBLogs.html"
 				, "-f:src/test/resources/logFiles/SuccessDeclaration.testlog"
 		};
@@ -42,7 +43,8 @@ public class AppTest {
 	@Test
 	public void runProcessWithDBLogsStrangeFile() {
 		String[] args = new String[] {
-				"-db:true"
+				//"-db:true"
+				"-db:false"
 				, "-d:logs/CalendartestinSearchform.txt.html"
 				, "-f:src/test/resources/logFiles/CalendartestinSearchform.txt"
 		};

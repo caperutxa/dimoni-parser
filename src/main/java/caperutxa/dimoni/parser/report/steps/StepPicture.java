@@ -1,5 +1,6 @@
 package caperutxa.dimoni.parser.report.steps;
 
+import caperutxa.dimoni.parser.constants.LogLevel;
 import caperutxa.dimoni.parser.report.ReportStep;
 
 public class StepPicture extends ReportStep {
@@ -16,7 +17,7 @@ public class StepPicture extends ReportStep {
 	@Override
 	public void parseContent() {
 		parseContent = content;
-		imgPath = content.split("- PICTURE : ")[1];
+		imgPath = content.split(LogLevel.PICTURE)[1];
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package caperutxa.dimoni.parser.report.steps;
 
+import caperutxa.dimoni.parser.constants.LogLevel;
 import caperutxa.dimoni.parser.report.ReportStep;
 
 public class StepTime extends ReportStep {
@@ -16,7 +17,7 @@ public class StepTime extends ReportStep {
 
 	@Override
 	public void parseContent() {
-		String[] parse = content.split("- TIME :")[1].split("#@#");
+		String[] parse = content.split(LogLevel.TIME)[1].split("#@#");
 		time = parse[0];
 		timeType = parse[1];
 		page = parse[2];

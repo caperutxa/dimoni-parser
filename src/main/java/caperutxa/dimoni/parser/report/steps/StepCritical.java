@@ -1,5 +1,6 @@
 package caperutxa.dimoni.parser.report.steps;
 
+import caperutxa.dimoni.parser.constants.LogLevel;
 import caperutxa.dimoni.parser.report.ReportStep;
 
 public class StepCritical extends ReportStep {
@@ -12,7 +13,7 @@ public class StepCritical extends ReportStep {
 
 	@Override
 	public void parseContent() {
-		String[] partial = content.split("- CRITICAL :");
+		String[] partial = content.split(LogLevel.CRITICAL);
 		content = partial[0] + "<strong> CRITICAL ERROR </strong>" + partial[1];
 	}
 

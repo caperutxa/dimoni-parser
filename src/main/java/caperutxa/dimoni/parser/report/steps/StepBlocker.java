@@ -1,5 +1,6 @@
 package caperutxa.dimoni.parser.report.steps;
 
+import caperutxa.dimoni.parser.constants.LogLevel;
 import caperutxa.dimoni.parser.report.ReportStep;
 
 public class StepBlocker extends ReportStep {
@@ -12,7 +13,7 @@ public class StepBlocker extends ReportStep {
 
 	@Override
 	public void parseContent() {
-		String[] partial = content.split("- BLOCKER :");
+		String[] partial = content.split(LogLevel.BLOCKER);
 		content = partial[0] + "<strong> BLOCKER ERROR </strong>" + partial[1];
 		
 	}

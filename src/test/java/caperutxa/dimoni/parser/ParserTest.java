@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import caperutxa.dimoni.parser.constants.Constants;
@@ -16,6 +17,12 @@ import caperutxa.dimoni.parser.constants.LogLevel;
 public class ParserTest {
 
 	List<String> args = new LinkedList<String>();
+
+	@Before
+	public void before() {
+		App.applyDefaultConfig();
+		Constants.USE_DB = false;
+	}
 	
 	@Test
 	public void testProcess() throws IOException {

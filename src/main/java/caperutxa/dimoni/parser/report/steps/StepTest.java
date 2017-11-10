@@ -1,5 +1,6 @@
 package caperutxa.dimoni.parser.report.steps;
 
+import caperutxa.dimoni.parser.constants.LogLevel;
 import caperutxa.dimoni.parser.report.ReportStep;
 
 public class StepTest extends ReportStep {
@@ -15,8 +16,8 @@ public class StepTest extends ReportStep {
 
 	@Override
 	public void parseContent() {
-		stepName = content.split("- STEP :")[1];
-		stepTime = content.split("- STEP :")[0];
+		stepName = content.split(LogLevel.STEP)[1];
+		stepTime = content.split(LogLevel.STEP)[0];
 	}
 	
 	@Override
