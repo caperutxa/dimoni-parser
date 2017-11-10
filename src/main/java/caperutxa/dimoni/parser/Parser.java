@@ -281,11 +281,11 @@ public class Parser {
 					long ts = (inter.getEndMillis() - inter.getStartMillis());
 					logModel.getTestTimeList().get(ETimes.STEP_TIME).put(stepName + " (" + i + ")", ts);
 					stepTime = partial;
-					stepName = s.split("- STEP : ")[1];
+					stepName = s.split(LogLevel.STEP)[1];
 				} else if(s.contains(LogLevel.TIME)) {
-					String[] partialTimeLine = s.split(" - TIME : ")[1].split(" #@# ");
+					String[] partialTimeLine = s.split(LogLevel.TIME)[1].split(" #@# ");
 					String name = partialTimeLine[2] + " (" + i + ")";
-					long ts = Long.valueOf(partialTimeLine[0]);
+					long ts = Long.valueOf(partialTimeLine[0].trim());
 					if(ETimes.LOAD_TIME.toString().equals(partialTimeLine[1])) {
 						logModel.getTestTimeList().get(ETimes.LOAD_TIME).put(name, ts);
 					} else if(ETimes.RESPONSE_TIME.toString().equals(partialTimeLine[1])) {
