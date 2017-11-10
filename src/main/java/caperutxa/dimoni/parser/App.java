@@ -46,7 +46,7 @@ public class App
 		InputStream input = null;
 
 		try {
-			input = new FileInputStream("config/parser.properties");
+			input = new FileInputStream(getPathToResourcesFile("/config/parser.properties"));
 			prop.load(input);
 			
 			LogLevel.BLOCKER = logLevelFromConfig(prop, "BLOCKER");
@@ -151,6 +151,19 @@ public class App
 		}
 		
 		return l;
+	}
+
+	public static String getPathToResourcesFile(String fileName) {
+		String path = App.class.getResource(fileName).getPath();
+		if(path.startsWith("/C:/")) {
+			path = path.substring(1);
+		} else if(path.startsWith("file:/C:/")) {
+			path = path.substring(6);
+		}
+
+		path = path.replace("parser.jar!", "resources");
+
+		return path;
 	}
 	
 }

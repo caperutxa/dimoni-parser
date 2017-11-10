@@ -184,8 +184,6 @@ public class Parser {
 				addLogLevelDeclarationToTestModel(LogLevel.WARNING);
 			} else if(s.contains(LogLevel.TEST)) {
 				addLogLevelDeclarationToTestModel(LogLevel.OTHERS);
-				String one = s.split(LogLevel.TEST)[1];
-				String two = s.split(LogLevel.TEST)[0];
 				logModel.getTestName().add(s.split(LogLevel.TEST)[1]);
 			} else if(s.contains(LogLevel.ENVIRONMENT)) {
 				addLogLevelDeclarationToTestModel(LogLevel.OTHERS);
